@@ -1,0 +1,80 @@
+<div id="compact-learning-explorer">
+  <style>
+    #compact-learning-explorer { position: relative; color: var(--foreground); }
+    #compact-learning-explorer .cl-field-label { display: flex; justify-content: space-between; gap: 12px; align-items: baseline; }
+    #compact-learning-explorer .cl-controls { margin-block: 16px; }
+    #compact-learning-explorer .cl-legend { display: flex; flex-wrap: wrap; gap: 8px 20px; margin-block: 12px; }
+    #compact-learning-explorer .cl-legend button { display: inline-flex; align-items: center; gap: 7px; padding: 4px 0; background: transparent; color: var(--foreground); border: 0; border-radius: 0; font: inherit; }
+    #compact-learning-explorer .cl-legend button[aria-pressed="false"] { opacity: .45; }
+    #compact-learning-explorer .cl-swatch { width: 24px; height: 0; border-top: 3px solid var(--viz-series-1); }
+    #compact-learning-explorer .cl-swatch.large { border-color: var(--viz-series-2); }
+    #compact-learning-explorer .cl-swatch.limited { border-top-style: dashed; }
+    #compact-learning-explorer .cl-chart { width: 100%; }
+    #compact-learning-explorer .cl-chart svg { display: block; width: 100%; overflow: visible; }
+    #compact-learning-explorer .cl-chart text { fill: var(--foreground); font-size: 12px; font-weight: 400; }
+    #compact-learning-explorer .cl-chart .domain, #compact-learning-explorer .cl-chart .tick line { stroke: var(--border); }
+    #compact-learning-explorer .cl-chart [data-chart-frame] { fill: none; stroke: var(--border); }
+    #compact-learning-explorer .cl-chart .cl-reference { stroke: var(--muted-foreground); stroke-width: 1; }
+    #compact-learning-explorer .cl-chart .cl-grid { stroke: var(--border); stroke-width: 1; opacity: .55; }
+    #compact-learning-explorer .cl-chart .cl-curve { fill: none; stroke-width: 2.4; }
+    #compact-learning-explorer .cl-inspect { display: flex; flex-wrap: wrap; align-items: center; gap: 8px 16px; margin-block: 8px; }
+    #compact-learning-explorer .cl-inspect-field { flex: 1; min-width: 120px; }
+    #compact-learning-explorer .cl-status { min-height: 1em; margin-block: 8px; }
+    #compact-learning-explorer .cl-notes { margin-block: 8px; }
+    #compact-learning-explorer .cl-tooltip { position: absolute; display: none; pointer-events: none; z-index: 4; max-width: min(360px, calc(100% - 16px)); background: var(--popover); color: var(--popover-foreground); padding: 12px; border: 1px solid var(--border); }
+    #compact-learning-explorer .cl-tooltip-row { margin-top: 8px; }
+    #compact-learning-explorer .cl-tooltip-row > span { display: block; }
+    #compact-learning-explorer .cl-table th[scope="row"] { min-width: 155px; }
+    #compact-learning-explorer .cl-table td { vertical-align: top; }
+    #compact-learning-explorer .cl-table .cl-secondary { display: block; color: var(--muted-foreground); }
+    #compact-learning-explorer details { margin-block: 12px; }
+    #compact-learning-explorer summary { color: var(--foreground); }
+    @media (pointer: coarse) { #compact-learning-explorer .cl-legend button { min-height: 44px; } }
+  </style>
+  <h3>Production, demand and electricity cost</h3>
+  <div class="text-small text-muted">Hypothetical electricity products · one completed first unit per design</div>
+  <div class="viz-controls cl-controls">
+    <label class="form-label" for="cl-compact-foak">Compact FOAK cost ($/MWh)<input class="form-control" id="cl-compact-foak" data-param="compactFoak" type="number" min="100" max="2000" step="25" value="500"></label>
+    <label class="form-label" for="cl-large-foak">Large FOAK cost ($/MWh)<input class="form-control" id="cl-large-foak" data-param="largeFoak" type="number" min="100" max="2000" step="25" value="250"></label>
+    <label class="form-label" for="cl-rate"><span class="cl-field-label"><span>Learning per completed-unit doubling</span><output class="tabular-nums" data-value="rate">25%</output></span><input class="form-range" id="cl-rate" data-param="rate" type="range" min="0" max="40" step="1" value="25"></label>
+    <label class="form-label" for="cl-floor"><span class="cl-field-label"><span>Fixed cost contribution</span><output class="tabular-nums" data-value="floor">$5/MWh</output></span><input class="form-range" id="cl-floor" data-param="floor" type="range" min="0" max="30" step="1" value="5"></label>
+    <label class="form-label" for="cl-compact-limit"><span class="cl-field-label"><span>Compact demand limit, dashed case</span><span>units</span></span><input class="form-control" id="cl-compact-limit" data-param="compactLimit" type="number" min="1" max="10000" step="1" value="31"></label>
+    <label class="form-label" for="cl-large-limit"><span class="cl-field-label"><span>Large demand limit, dashed case</span><span>units</span></span><input class="form-control" id="cl-large-limit" data-param="largeLimit" type="number" min="1" max="1000" step="1" value="7"></label>
+  </div>
+  <details>
+    <summary class="cursor-interaction">Other assumptions</summary>
+    <div class="viz-controls cl-controls">
+      <label class="form-label" for="cl-compact-size">Compact unit output (MWe)<input class="form-control" id="cl-compact-size" data-param="compactSize" type="number" min="1" max="100" step="1" value="10"></label>
+      <label class="form-label" for="cl-large-size">Large unit output (MWe)<input class="form-control" id="cl-large-size" data-param="largeSize" type="number" min="100" max="2000" step="100" value="1000"></label>
+      <label class="form-label" for="cl-compact-lead">Compact order to delivery (years)<input class="form-control" id="cl-compact-lead" data-param="compactLead" type="number" min="1" max="10" step="1" value="1"></label>
+      <label class="form-label" for="cl-large-lead">Large order to delivery (years)<input class="form-control" id="cl-large-lead" data-param="largeLead" type="number" min="1" max="15" step="1" value="5"></label>
+      <label class="form-label" for="cl-benchmark">Wholesale reference ($/MWh)<input class="form-control" id="cl-benchmark" data-param="benchmark" type="number" min="20" max="200" step="5" value="60"></label>
+      <label class="form-label" for="cl-capacity">Annual production ceiling (GWe)<input class="form-control" id="cl-capacity" data-param="capacityCap" type="number" min="0" max="100" step="1" value="25"></label>
+      <label class="form-label" for="cl-growth">Order growth after crossover (%/year)<input class="form-control" id="cl-growth" data-param="growth" type="number" min="0" max="100" step="5" value="50"></label>
+      <label class="form-label" for="cl-pace">Continuing-demand order pace (×)<input class="form-control" id="cl-pace" data-param="earlyScale" type="number" min="0" max="3" step="0.25" value="1"></label>
+      <label class="form-label" for="cl-horizon">Years after first units enter service<input class="form-control" id="cl-horizon" data-param="horizon" type="number" min="5" max="100" step="1" value="45"></label>
+    </div>
+    <div class="text-small text-muted">Unit size and first-unit cost are independent assumptions.</div>
+  </details>
+  <div class="text-small text-muted">Learning applies to cost above the fixed contribution. Crossover permits order growth, subject to delivery time and production capacity.</div>
+  <div class="cl-status text-small" id="cl-status" role="status" aria-live="polite"></div>
+  <div class="cl-legend" id="cl-legend" aria-label="Visible deployment cases"></div>
+  <div class="cl-chart" id="cl-chart"></div>
+  <div class="cl-inspect">
+    <label for="cl-year">Inspect year <output class="tabular-nums" id="cl-year-value">0</output></label>
+    <div class="cl-inspect-field"><input class="form-range" id="cl-year" type="range" min="0" max="45" step="1" value="0" aria-label="Inspect a year of production"></div>
+  </div>
+  <div id="cl-accessible-detail" class="sr-only" aria-live="polite"></div>
+  <div class="table-responsive">
+    <table class="table table-sm cl-table" aria-label="Cost, experience, crossover dates and premium commitments">
+      <thead><tr><th scope="col">Deployment case</th><th scope="col" id="cl-cost-header">Cost in year 45</th><th scope="col">Completed units<br>and doublings</th><th scope="col" id="cl-wholesale-header">$60/MWh<br>price / delivery</th><th scope="col">$10/MWh<br>price / delivery</th><th scope="col">Lifetime premium</th></tr></thead>
+      <tbody id="cl-results"></tbody>
+    </table>
+  </div>
+  <div class="text-small text-muted cl-notes" id="cl-premium-note">Premium above wholesale · 90% utilization · 30-year unit life · constant dollars, undiscounted</div>
+  <div class="text-small text-muted cl-notes">Early limits include the first unit and unfinished orders. Competitive orders can expand beyond them. Premiums include payments after the chart ends and are not upfront capital.</div>
+  <div class="cl-tooltip tooltip" id="cl-tooltip" role="tooltip"></div>
+</div>
+<script src="https://cdn.jsdelivr.net/npm/d3@7.9.0/dist/d3.min.js"></script>
+<!-- COMPACT_MODEL -->
+<!-- COMPACT_VIEW -->
