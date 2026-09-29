@@ -41,19 +41,21 @@ python3 build.py
 
 The current interactive extensions, including raised early-demand limits, are documented in `src/MODEL-API.md`. They preserve all default reference paths.
 
-## Cloudflare Pages
+## Cloudflare Workers deployment
 
-Connect this Git repository to a Pages project with these settings:
+The dashboard runs on Cloudflare Workers Static Assets. The `1cfe-learning` Worker is connected to this repository through Workers Builds. Pushes to `main` build and deploy the site with these settings:
 
 | Setting | Value |
 | --- | --- |
 | Production branch | `main` |
-| Framework preset | None |
 | Build command | `python3 build.py` |
-| Build output directory | `public` |
+| Deploy command | `npx wrangler deploy` |
+| Static assets directory | `public` |
 | Root directory | Repository root |
 
-After the first successful deployment, add `learning.1cf.energy` under the project's custom domains. Add the custom domain through Pages before creating a manual DNS record. Domain verification and HTTPS issuance must finish before the article link is considered live.
+`wrangler.jsonc` records the Worker name, static assets directory and `learning.1cf.energy` custom domain. Cloudflare manages the domain's DNS record and HTTPS certificate. No application server or separate Worker script is required.
+
+The public dashboard is at <https://learning.1cf.energy/>. The article version is at <https://learning.1cf.energy/v10/>. Both URLs were verified over HTTPS on 29 September 2026.
 
 ## Versioning
 
