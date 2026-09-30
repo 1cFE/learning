@@ -1,0 +1,71 @@
+{
+  "title": "The compact-learning corridor",
+  "author": "Damien Scott",
+  "publication_date": "2026-09-30",
+  "canonical_url": "https://1cf.energy/compact-learning-corridor/",
+  "source_article_sha256": "a049095079e4935312d4c1e9276175b75869173343645790f2f4cb6a40091213",
+  "reader_article_sha256": "fc04e9b022616c81e32784c3dd4ff1b5b0e54c84489fcac369732383bed8e4bc",
+  "article_changes": "Site frontmatter replaced with title, author, publication date and canonical URL. Site links made absolute and article asset links made relative. Article body otherwise unchanged.",
+  "assets": [
+    {
+      "file": "assets/evidence-ledger.md",
+      "source": "https://1cf.energy/assets/compact-learning-corridor/evidence-ledger.md",
+      "sha256": "bc36ef58f592839a052901777679a9e8637dcb536ea707924771635c557747da"
+    },
+    {
+      "file": "assets/premiums.csv",
+      "source": "https://1cf.energy/assets/compact-learning-corridor/premiums.csv",
+      "sha256": "c97e1bd5115c82827247ec3077c9e5f263e208f9e76fc4cc1d7bec80dba57388"
+    },
+    {
+      "file": "assets/four-case-cost-trajectories.png",
+      "source": "https://1cf.energy/assets/compact-learning-corridor/four-case-cost-trajectories.png",
+      "sha256": "10c04fa8ca7c0fa63fe3bf0b237282d3ba01b976f86f27432b3d7d9e3352639d"
+    },
+    {
+      "file": "assets/cover.png",
+      "source": "https://1cf.energy/assets/compact-learning-corridor/cover.png",
+      "sha256": "74b0826180e28033920b0fa5d4c42e5d87efb545cc4639924f2336d59550e8d8"
+    },
+    {
+      "file": "assets/four_case_trajectory.py",
+      "source": "https://1cf.energy/assets/compact-learning-corridor/four_case_trajectory.py",
+      "sha256": "c5f01a4995e518606cc50bd115e8cf16f8a64f7f895cc225d4e7cbd79f037246"
+    },
+    {
+      "file": "assets/cohort_costs_and_premiums.csv",
+      "source": "https://1cf.energy/assets/compact-learning-corridor/cohort_costs_and_premiums.csv",
+      "sha256": "3831917e193263b1164b809bd9c1f4be918bf0e3eda6b24fb8fd03b8343a0234"
+    },
+    {
+      "file": "assets/target-envelope.csv",
+      "source": "https://1cf.energy/assets/compact-learning-corridor/target-envelope.csv",
+      "sha256": "52c597952bcb81a91de48c5cbd28573dff0faba3f986c185480ee2caba27c918"
+    },
+    {
+      "file": "assets/assumptions.json",
+      "source": "https://1cf.energy/assets/compact-learning-corridor/assumptions.json",
+      "sha256": "f277f86f2f5e44c939ef15761940f1843f3f2de6d1687c5c3fb742187f04a7f6"
+    },
+    {
+      "file": "assets/annual_trajectory.csv",
+      "source": "https://1cf.energy/assets/compact-learning-corridor/annual_trajectory.csv",
+      "sha256": "38f10fe709abdc97d06b9240b571d78500463829f39cb2026cf58faecd056498"
+    },
+    {
+      "file": "assets/model-note.md",
+      "source": "https://1cf.energy/assets/compact-learning-corridor/model-note.md",
+      "sha256": "bfb82fd5d748a647e229779208ce8224f3e1df9f9aae553cd26d238814b04bf6"
+    },
+    {
+      "file": "assets/learning-dashboard.png",
+      "source": "https://1cf.energy/assets/compact-learning-corridor/learning-dashboard.png",
+      "sha256": "8782cdd1e22fed2aff7c7fa3c8b39870c6c6d7ea28700e5f7e3e87fcd50bdaca"
+    },
+    {
+      "file": "assets/milestones-and-summary.json",
+      "source": "https://1cf.energy/assets/compact-learning-corridor/milestones-and-summary.json",
+      "sha256": "a9768c062695a0e21cd175b069b409b8e69afdab1fbe44e2aefc1ead65c64808"
+    }
+  ]
+}

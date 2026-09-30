@@ -1,0 +1,9 @@
+scenario,learning_rate,floor_per_mwh,premium_units,premium_capacity_gwe,premium_pipeline_units_at_qualification,premium_pipeline_gwe_at_qualification,lifetime_premium_dollars,window_premium_dollars
+"Compact, sufficient support",0.25,5.0,237,2.37,0,0,23145601729.395027,23145601729.395027
+"Compact, support ends",0.25,5.0,31,0.31000000000000005,0,0,12712450761.124771,12712450761.124771
+"Large, limited support",0.25,5.0,7,7.0,0,0,225279327187.58133,221189601995.37082
+"Large, sufficient support",0.25,5.0,76,76.0,39,39.0,1314176778366.1047,1313738095832.9797
+"Compact, sufficient support",0.1,5.0,9057,90.57,0,0,1977073043143.929,1034965243742.8835
+"Compact, support ends",0.1,5.0,31,0.31000000000000005,0,0,22821957279.868263,22821957279.868263
+"Large, limited support",0.1,5.0,7,7.0,0,0,276279535527.1377,268623708467.8207
+"Large, sufficient support",0.1,5.0,366,366.0,0,0,6468595701359.522,4472970634037.03

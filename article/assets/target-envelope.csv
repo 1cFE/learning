@@ -1,0 +1,6 @@
+floor_per_mwh,learning_rate,foak_lcoe_per_mwh,unit_mwe,target_per_mwh,calendar_horizon_years,finite_attainment_possible,minimum_completed_units,minimum_cumulative_manufactured_gwe,theoretical_doublings,doublings_at_minimum_integer_units,first_target_order_year_within_horizon,actual_completed_units_at_first_target_order,actual_cumulative_manufactured_gwe_at_first_target_order,actual_operating_capacity_gwe_at_first_target_order,first_target_order_lcoe_per_mwh,first_target_delivery_year_within_horizon,first_target_cohort_units,first_wholesale_order_year_within_horizon,endpoint_next_order_lcoe_per_mwh,endpoint_completed_units
+5.0,0.2,500.0,10,10.0,45,True,1581282,15812.82,20.592662539748574,20.592663244877638,,,,,,,,16,19.167279747082382,62228
+5.0,0.25,500.0,10,10.0,45,True,64317,643.17,15.972909993912774,15.972912494616343,41,64514,645.14,640.52,9.993653944719544,42,2500,9,9.703745050877195,74514
+5.0,0.3,500.0,10,10.0,45,True,7555,75.55,12.88321461381911,12.883216040052192,17,8038,80.38,80.38,9.843070613558414,18,2500,6,6.503680995594461,78038
+2.0,0.25,500.0,10,10.0,45,True,21030,210.3,14.360152859498227,14.360161229619141,24,22014,220.14,220.14,9.849580097722992,25,2500,9,6.7322525966400875,74514
+8.0,0.25,500.0,10,10.0,45,True,576460,5764.6,19.136859968412264,19.13686097857798,,,,,,,,9,12.675237505114303,74514

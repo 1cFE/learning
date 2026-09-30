@@ -1,0 +1,87 @@
+{
+  "evidence_grade": "Chosen assumptions and arithmetic only",
+  "horizon_years": 45,
+  "unit_life_years": 30,
+  "capacity_factor": 0.9,
+  "floor_per_mwh": 5.0,
+  "wholesale_benchmark_per_mwh": 60.0,
+  "long_term_target_per_mwh": 10.0,
+  "fixed_floor_evidence": "The $5/MWh fixed contribution is a hypothetical budget assumption with no validated plant or component cost budget behind it",
+  "primary_learning_rate": 0.25,
+  "sensitivity_learning_rate": 0.1,
+  "learning_boundary": "Cost above the fixed contribution; experience is completed identical units within each design",
+  "fuel_and_confinement": "Unspecified; the assumed electricity products do not use a reactor, plasma or magnet cost model",
+  "annual_post_qualification_order_growth": 0.5,
+  "annual_capacity_ceiling_mwe": 25000,
+  "timing": "Due completions occur before new orders; every cohort retains its order-start LCOE",
+  "premium_formula": "sum(max(cohort_LCOE - benchmark, 0) * units * MWe_per_unit * 8760 * CF * unit_life)",
+  "premium_basis": "Full 30-year lives of every delivered cohort; constant dollars, undiscounted; no netting later below-benchmark generation",
+  "window_premium_basis": "Payments during [0, 45), with commissioning at integer-year start; a year-45 delivery contributes zero within-window years",
+  "cashflow_interpretation": "Illustrative recovery of an LCOE gap, not actual contracts, upfront funding, capital requirements or a fiscal subsidy estimate",
+  "scenarios": [
+    {
+      "name": "Compact, sufficient support",
+      "size_mwe": 10,
+      "foak_lcoe": 500.0,
+      "lead_years": 1,
+      "schedule": "compact_original",
+      "expands": true
+    },
+    {
+      "name": "Compact, support ends",
+      "size_mwe": 10,
+      "foak_lcoe": 500.0,
+      "lead_years": 1,
+      "schedule": "compact_31",
+      "expands": false
+    },
+    {
+      "name": "Large, limited support",
+      "size_mwe": 1000,
+      "foak_lcoe": 250.0,
+      "lead_years": 5,
+      "schedule": "large_7",
+      "expands": false
+    },
+    {
+      "name": "Large, sufficient support",
+      "size_mwe": 1000,
+      "foak_lcoe": 250.0,
+      "lead_years": 5,
+      "schedule": "large_ramp",
+      "expands": true
+    }
+  ],
+  "compact_original_orders_years_0_to_19": [
+    2,
+    4,
+    8,
+    16,
+    24,
+    32,
+    40,
+    50,
+    60,
+    70,
+    80,
+    90,
+    100,
+    110,
+    120,
+    130,
+    140,
+    150,
+    160,
+    170
+  ],
+  "compact_original_orders_after_year_19": "Increase by 10 units per order year until the qualification rule overrides; final compact order year is 44",
+  "large_supported_initial_orders": "1 through 10 units in years 0 through 9, then 10 per year until qualification; final large order year is 40",
+  "target_envelope": "Five compact floor/rate combinations; exact mathematical minimum experience and timing only within the main 45-year horizon",
+  "scope_limits": [
+    "Demand, factories, finance and service are assumed to support scheduled orders",
+    "No operating or financing build-up validates the chosen LCOEs",
+    "No within-cohort learning, learning before completion or retroactive cost reduction",
+    "No automatic learning transfer between unit sizes",
+    "Completed-unit experience persists after a unit retires"
+  ]
+}

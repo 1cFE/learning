@@ -1,6 +1,6 @@
 # Fusion learning dashboard
 
-Interactive supplement for the compact learning corridor post at [1cf.energy](https://1cf.energy). Repository: [1cFE/learning](https://github.com/1cFE/learning). The production address is `https://learning.1cf.energy/`. Use `https://learning.1cf.energy/v10/` in the article to retain its original model and defaults.
+Interactive supplement for the [compact learning corridor post](https://1cf.energy/compact-learning-corridor/). Repository: [1cFE/learning](https://github.com/1cFE/learning). The production address is `https://learning.1cf.energy/`. Use `https://learning.1cf.energy/v10/` in the article to retain its original model and defaults.
 
 The six primary controls are separate compact and large first-unit costs, a shared learning rate, a shared fixed cost contribution, and each design's limited early demand. Additional assumptions are under “Other assumptions”. The calculation is hypothetical and keeps new-order prices, cohort delivery dates and lifetime premium commitments distinct.
 
@@ -13,6 +13,14 @@ python3 build.py
 ```
 
 The build runs the numerical tests before generating `public/index.html`, a self-contained offline page. The tests compare 13 independently generated Python reference paths, then cover edge cases and randomized invariants. `NODE` can select a Node executable if it is not on `PATH`.
+
+To reproduce the article's numerical outputs from the repository root:
+
+```sh
+python3 scripts/four_case_trajectory.py --no-plot
+```
+
+This uses only Python's standard library. It writes annual trajectories, cohort costs, premium totals, assumptions and the $10/MWh production requirements as CSV and JSON files in `results/`, and prints the milestone summary. Omit `--no-plot` to also generate the figure in `figures/`; plotting requires matplotlib.
 
 ```sh
 python3 -m http.server 8000 --directory public
@@ -29,6 +37,7 @@ Open `http://localhost:8000`. The deployed directory is `public/`. It contains n
 - `src/generate-model-fixture.py`: regenerates the fixture from the bundled Python source using only the standard library.
 - `src/model-notes.html`: public explanation of the assumptions and source.
 - `public/v10/`: frozen article snapshot. Normal builds verify its checksums and never overwrite it.
+- `article/`: the published article, its supporting files, release checksums and content/data license notices. [Read the article source](article/compact-learning-corridor.md).
 
 Change source files and run the build before committing. Commit generated `public/` files as well so the article snapshot and deployment output remain reviewable. The GitHub check rejects generated output that does not match source.
 
@@ -63,6 +72,8 @@ The first v10 snapshot was created once with `python3 build.py --freeze-v10`. Th
 
 ## License
 
-The original code and documentation in this repository are licensed under the [MIT License](LICENSE), copyright 2026 Astera Institute.
+The original dashboard code, Python calculation and implementation documentation are licensed under the [MIT License](LICENSE), copyright 2026 Astera Institute.
+
+The article release in `article/` has separate terms: original article text, supporting explanatory text and original figures are [CC BY 4.0](article/CONTENT-LICENSE.md). Original numerical data and factual metadata are [CC0 1.0](article/DATA-LICENSE.md). The copied Python calculation remains MIT. [Article rights and attribution](article/RIGHTS.md) describes the scopes and third-party exclusions. The article's author is Damien Scott, and its existing copyright notice is © 2026 Astera Institute.
 
 Bundled D3 v7.9.0 retains its [ISC license](src/vendor/D3-LICENSE.txt), copyright 2010–2023 Mike Bostock. Its license notices are also included in `public/D3-LICENSE.txt` and `public/v10/D3-LICENSE.txt`.
