@@ -61,4 +61,8 @@ The public dashboard is at <https://learning.1cf.energy/>. The article version i
 
 The first v10 snapshot was created once with `python3 build.py --freeze-v10`. The command refuses to replace it. New scientific assumptions should get a new versioned path and snapshot rather than altering the article's published calculation. The root dashboard can later advance while `/v10/` stays fixed.
 
-D3 v7.9.0 is bundled under `src/vendor/D3-LICENSE.txt`. No license is asserted here for the author's original model or writing.
+## License
+
+The original code and documentation in this repository are licensed under the [MIT License](LICENSE), copyright 2026 Astera Institute.
+
+Bundled D3 v7.9.0 retains its [ISC license](src/vendor/D3-LICENSE.txt), copyright 2010–2023 Mike Bostock. Its license notices are also included in `public/D3-LICENSE.txt` and `public/v10/D3-LICENSE.txt`.
